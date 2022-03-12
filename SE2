@@ -1,0 +1,31 @@
+import numpy as np
+
+# 读入yq_in.txt文件
+with open("yq_in.txt") as h:
+    data = h.read()
+    print(data)
+
+# 使用split函数将.txt文本进行分割，表示用空格分开，得到一个字符串列表
+c = data.split()
+print(c)
+
+# 将数据.txt转换成数组array形式
+b = np.array(c)
+print(b)
+
+# 因为array()函数只能转换成一维数组，使用reshape()函数对一位数组进行重组，使其变成一个129行，3列的二维数组
+d = b.reshape(129, 3)
+print(d)
+
+# 使用循环对二维数组进行分类
+print(d[0][0])
+for i in range(128):
+
+    if (d[i][0] == d[i+1][0]):
+        print(d[i][1]+'\t'+d[i][2])
+    else:
+        print(d[i][1]+'\t'+d[i][2])
+        print('\n'+d[i+1][0])
+
+# 因为超出了索引的最大范围，所以最后一行得单独输出
+print(d[128][1]+'\t'+d[128][2])
